@@ -18,12 +18,12 @@ func Test_InMemorySimpleMetricsService_Aggregate(t *testing.T) {
 	e6 := simplemetrics.Event{"Label", 0, asTime("01.01.2020 15:00:50")}
 
 	service := simplemetrics.InMemorySimpleMetricsService{}
-
 	service.Record(e, ea, e1, e2, e3, e4, e5, e6)
 
 	tenSecondsInMs := 10 * 1000
+	query := simplemetrics.NewQuery("Label", asTime("01.01.2020 15:00:00"), asTime("01.01.2020 15:01:00"), simplemetrics.AGGREGATE_SUM, tenSecondsInMs)
 
-	buckets := service.Aggregate("Label", asTime("01.01.2020 15:00:00"), asTime("01.01.2020 15:01:00"), simplemetrics.AGGREGATE_SUM, tenSecondsInMs)
+	buckets := service.Aggregate(query)
 
 	actualLen := len(buckets)
 	expectedLen := 7
@@ -48,7 +48,6 @@ func Test_InMemorySimpleMetricsService_Aggregate(t *testing.T) {
 	if sum != expectedSum {
 		t.Errorf("expected sum of events in buckets to be %d, got %d", expectedSum, sum)
 	}
-
 }
 
 func asTime(str string) time.Time {

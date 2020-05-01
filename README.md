@@ -1,6 +1,27 @@
 Simple Metrics Service In Go
 =============================
 
+A in memory metrics store, that allows simple aggregations on events collected.
+
+example binary & usage:
+------------------------
+
+build the example webserver:
+
+    go build -o metricsServer cmd/metricsServer/main.go 
+
+and then you can record events by using curl:
+    
+    curl ... 
+
+and then ask for an aggregation on those events with a certain sample rate:
+
+    curl ...
+
+docker build if you have no golang installed (todo):
+
+    docker build -t ... 
+
 
 WIP  - brainstorming ahead
 ----------------------------

@@ -12,15 +12,24 @@ build the example webserver:
 
 and then you can record events by using curl:
     
-    curl ... 
+    curl -XGET localhost:8888/collect?label=user.visited
 
 and then ask for an aggregation on those events with a certain sample rate:
 
     curl ...
 
-docker build if you have no golang installed (todo):
+Docker
+-------
 
-    docker build -t ... 
+To build and run the example web server, you can use the provided docker file. 
+
+Run the following command from the main directory in order to build the image: 
+
+    docker build -t simplemetrics:latest .  
+
+Run the following command to start the example web server listening on port 8888 in detached mode:
+
+    docker run -d -8888:8080 simplemetrics:latest   
 
 
 WIP  - brainstorming ahead

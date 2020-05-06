@@ -12,7 +12,7 @@ build the example webserver:
 
 and then you can record events by using curl:
     
-    curl -XGET localhost:8888/collect?label=user.visited
+    curl -XGET localhost:8080/collect?label=user.visited
 
 and then ask for an aggregation on those events with a certain sample rate:
 

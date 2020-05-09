@@ -1,10 +1,10 @@
 FROM golang:1.14-alpine AS builder
 RUN apk add --no-cache git
-COPY . tmp/simpleMetricsServiceInGo
-WORKDIR tmp/simpleMetricsServiceInGo
-RUN go build -o /bin/metricsServer cmd/metricsServer/main.go
+COPY . tmp/simpleMetrics
+WORKDIR tmp/simpleMetrics
+RUN go build -o /bin/exampleServer cmd/exampleServer/main.go
 
 FROM alpine:3.11 AS final
 RUN apk add --no-cache
-COPY --from=builder /bin/metricsServer /bin/metricsServer
-CMD ["/bin/metricsServer"]
+COPY --from=builder /bin/exampleServer /bin/exampleServer
+CMD ["/bin/exampleServer"]

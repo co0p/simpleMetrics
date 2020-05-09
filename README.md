@@ -8,15 +8,17 @@ example binary & usage:
 
 build the example webserver:
 
-    go build -o metricsServer cmd/metricsServer/main.go 
+    go build -o exampleServer cmd/exampleServer/main.go 
 
 and then you can record events by using curl:
     
-    curl -XGET localhost:8080/collect?label=user.visited
+     curl -XGET "localhost:8080/collect?label=req.duration&value=122"
+
+which translates into: collect the value 122 at the current time for the event group "req.duration"
 
 and then ask for an aggregation on those events with a certain sample rate:
 
-    curl ...
+    curl -XGET "localhost:8080/aggregate/sum" # not working yet
 
 Docker
 -------
@@ -29,7 +31,7 @@ Run the following command from the main directory in order to build the image:
 
 Run the following command to start the example web server listening on port 8888 in detached mode:
 
-    docker run -d -8888:8080 simplemetrics:latest   
+    docker run -d -p8888:8080 simplemetrics:latest   
 
 
 WIP  - brainstorming ahead

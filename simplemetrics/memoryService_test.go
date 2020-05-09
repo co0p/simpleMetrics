@@ -1,7 +1,7 @@
 package simplemetrics_test
 
 import (
-	simplemetrics "github.com/co0p/simpleMetricsServiceInGo"
+	"github.com/co0p/simpleMetricsServiceInGo/simplemetrics"
 	"testing"
 	"time"
 )

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/co0p/simpleMetricsServiceInGo/simplemetrics"
+	simplemetrics "github.com/co0p/simpleMetricsServiceInGo/pkg"
 	"log"
 	"net/http"
 	"os"

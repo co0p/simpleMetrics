@@ -1,7 +1,7 @@
-Simple Metrics Service In Go
+Simple Metrics In Go
 =============================
 
-A in memory metrics store, that allows simple aggregations on events collected.
+A metrics service, that allows simple aggregations on events collected.
 
 example binary & usage:
 ------------------------
